@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Manual de Conduta Auto Peças Fernando</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
+<style>
+/* Layout: guia em capítulos (uma "página" por capítulo, navegação por hash), coluna única de leitura,
+   barra fixa no topo, tipografia grande em azul-marinho, amarelo da loja só como destaque, marrom terra em detalhes. */
+:root{
+  --bg:#ffffff;
+  --mist:#f2f4f9;
+  --line:#dfe3ee;
+  --ink:#141d3b;
+  --muted:#535d78;
+  --navy:#16245c;
+  --navy-deep:#0f1a45;
+  --on-navy:#ffffff;
+  --yellow:#f6c400;
+  --on-yellow:#16245c;
+  --brown:#8a5a3b;
+  --ok:#1d7a4c;
+  --ok-bg:#e5f4ec;
+  --no:#b3262d;
+  --no-bg:#fbe9ea;
+  --pend:#8a5a3b;
+  --pend-bg:#f6ece5;
+  --display:"Josefin Sans", "Trebuchet MS", "Segoe UI", sans-serif;
+  --body:"Nunito Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c1230; --mist:#141c40; --line:#26305a; --ink:#eef1fa; --muted:#a8b0cc;
+    --navy:#2b3c86; --navy-deep:#0a1029; --on-navy:#ffffff; --yellow:#f6c400; --on-yellow:#0f1a45;
+    --brown:#d0a07e; --ok:#6fd3a0; --ok-bg:#12352a; --no:#ff8a8f; --no-bg:#3a1520; --pend:#e0b392; --pend-bg:#33241b;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c1230; --mist:#141c40; --line:#26305a; --ink:#eef1fa; --muted:#a8b0cc;
+  --navy:#2b3c86; --navy-deep:#0a1029; --on-navy:#ffffff; --yellow:#f6c400; --on-yellow:#0f1a45;
+  --brown:#d0a07e; --ok:#6fd3a0; --ok-bg:#12352a; --no:#ff8a8f; --no-bg:#3a1520; --pend:#e0b392; --pend-bg:#33241b;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--navy-deep)}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:820px;margin:0 auto}
+
+/* ---------- Topbar ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--navy-deep);color:var(--on-navy)}
+.top .in{display:flex;align-items:center;gap:12px;height:60px;max-width:1100px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand img{height:30px;width:auto;border-radius:4px;display:block}
+.brand span{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .sp{flex:1}
+.pill-prog{font-size:13px;font-weight:700;background:rgba(255,255,255,.1);padding:5px 10px;border-radius:99px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.menu-btn{display:flex;align-items:center;gap:8px;background:var(--yellow);color:var(--on-yellow);border:0;border-radius:99px;padding:8px 14px;font-weight:800;font-size:14px}
+.menu-btn svg{width:18px;height:18px}
+.bar{height:3px;background:rgba(255,255,255,.12)}
+.bar i{display:block;height:100%;width:0;background:var(--yellow);transition:width .4s}
+
+/* ---------- Drawer ---------- */
+.drawer{position:fixed;inset:0;z-index:40;display:flex;justify-content:flex-end;background:rgba(8,12,32,.55)}
+.drawer[hidden]{display:none!important}
+.drawer nav{background:var(--bg);width:min(420px,100%);height:100%;overflow:auto;padding-top:calc(env(safe-area-inset-top,0px) + 16px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 24px);padding-left:20px;padding-right:max(20px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:4px}
+.drawer .dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.drawer .dh b{font-family:var(--display);font-size:22px;color:var(--navy)}
+:root[data-theme="dark"] .drawer .dh b{color:var(--ink)}
+.x{border:1px solid var(--line);background:var(--mist);border-radius:99px;width:40px;height:40px;display:grid;place-items:center}
+.drawer a.ch{display:flex;gap:12px;align-items:baseline;text-decoration:none;padding:10px 8px;border-radius:10px}
+.drawer a.ch:hover{background:var(--mist)}
+.drawer a.ch .n{font-family:var(--display);font-weight:700;color:var(--brown);width:28px;flex:none}
+.drawer a.ch .t{font-weight:800}
+.drawer a.ch small{display:block;color:var(--muted);font-weight:400;font-size:13px;line-height:1.4}
+.drawer .tools{margin-top:12px;display:grid;gap:8px}
+.drawer .tools a{text-decoration:none;font-weight:800;padding:12px 14px;border-radius:12px;background:var(--mist);display:flex;justify-content:space-between}
+
+/* ---------- Views ---------- */
+.view{padding-bottom:64px}
+.view[hidden]{display:none!important}
+.chap-head{background:var(--navy);color:var(--on-navy);padding-block:44px 40px;position:relative;overflow:hidden}
+.chap-head .wrap{position:relative}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.chap-head .eyebrow{color:var(--yellow)}
+.chap-head h1{font-size:clamp(40px,9vw,76px);font-weight:700;margin-top:10px}
+.chap-head p{margin-top:14px;max-width:560px;font-size:18px;opacity:.9}
+.chap-head .big{position:absolute;right:-6px;bottom:-40px;font-family:var(--display);font-weight:700;font-size:200px;line-height:1;color:rgba(255,255,255,.06);pointer-events:none}
+.chap-head .rule{display:block;width:56px;height:4px;background:var(--brown);margin-top:22px;border-radius:2px}
+:root .chap-head .rule{background:#c08b66}
+
+.sec{padding-block:48px 0}
+.sec + .sec{border-top:1px solid var(--line);margin-top:48px}
+.sec-tag{display:inline-block;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+.sec h2{font-size:clamp(28px,5.6vw,40px);color:var(--navy);margin-top:8px}
+:root[data-theme="dark"] .sec h2{color:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sec h2{color:var(--ink)}}
+.sec h3{font-size:24px;color:var(--ink);margin-top:36px}
+.sec .lead{font-size:19px;margin-top:16px;max-width:65ch}
+.sec p + p{margin-top:14px}
+.sec p{max-width:65ch}
+.stack{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+
+.figure{margin:28px 0 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#fff}
+.figure img{display:block;width:100%;height:auto}
+
+.quote{margin-top:28px;font-family:var(--display);font-weight:700;font-size:clamp(26px,5.4vw,38px);line-height:1.12;color:var(--navy);max-width:22ch}
+:root[data-theme="dark"] .quote{color:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .quote{color:var(--ink)}}
+.quote mark{background:linear-gradient(transparent 58%,var(--yellow) 58%);color:inherit;padding:0 2px}
+
+.note{margin-top:24px;padding:20px 22px;border-radius:var(--r);background:var(--mist)}
+.note b.k{display:block;font-family:var(--display);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);margin-bottom:6px}
+.note.navy{background:var(--navy);color:var(--on-navy)}
+.note.navy b.k{color:var(--yellow)}
+.note.alert{background:var(--no-bg);color:var(--ink)}
+.note.alert b.k{color:var(--no)}
+
+ul.clean{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:12px}
+ul.clean li{display:flex;gap:12px;align-items:flex-start}
+ul.clean li .ic{flex:none;width:26px;height:26px;border-radius:99px;display:grid;place-items:center;margin-top:1px}
+ul.clean li .ic svg{width:15px;height:15px}
+.ic.ok{background:var(--ok-bg);color:var(--ok)}
+.ic.no{background:var(--no-bg);color:var(--no)}
+.ic.dot{background:var(--mist);color:var(--navy)}
+:root[data-theme="dark"] .ic.dot{color:var(--yellow)}
+
+.steps{counter-reset:s;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:16px;border:1px solid var(--line);border-radius:var(--r)}
+.steps li::before{content:counter(s);font-family:var(--display);font-weight:700;font-size:28px;line-height:1;color:var(--navy);background:var(--yellow);width:44px;height:44px;border-radius:12px;display:grid;place-items:center;padding-top:4px}
+
+/* ---------- Home ---------- */
+.hero{background:var(--navy-deep);color:var(--on-navy);padding-block:40px 56px;position:relative;overflow:hidden}
+.hero .wrap{max-width:1000px;position:relative}
+.hero .logo{display:inline-block;border-radius:8px;overflow:hidden;line-height:0;box-shadow:0 0 0 4px rgba(255,255,255,.06)}
+.hero .logo img{height:58px;width:auto}
+.hero h1{font-size:clamp(54px,14vw,128px);font-weight:700;line-height:.9;margin-top:28px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--yellow);display:block}
+.hero .sub{margin-top:22px;font-size:19px;max-width:600px;opacity:.92}
+.hero .tag{margin-top:18px;font-size:14px;opacity:.7}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:99px;border:0;font-size:16px}
+.btn.y{background:var(--yellow);color:var(--on-yellow)}
+.btn.g{background:rgba(255,255,255,.1);color:var(--on-navy);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.btn.n{background:var(--navy);color:var(--on-navy)}
+.btn.o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn svg{width:18px;height:18px}
+.hero .stripes{position:absolute;right:-60px;top:36px;display:flex;flex-direction:column;gap:10px;transform:rotate(-12deg);opacity:.9}
+.hero .stripes i{display:block;height:14px;border-radius:99px}
+.hero .stripes i:nth-child(1){width:260px;background:var(--yellow)}
+.hero .stripes i:nth-child(2){width:200px;background:rgba(255,255,255,.18)}
+.hero .stripes i:nth-child(3){width:150px;background:#c08b66}
+@media (max-width:640px){.hero .stripes{right:-120px;top:20px;opacity:.6}}
+
+.manifesto{padding-block:48px 8px}
+.manifesto p{font-family:var(--display);font-weight:600;font-size:clamp(24px,4.8vw,34px);line-height:1.22;color:var(--navy);max-width:28ch}
+:root[data-theme="dark"] .manifesto p{color:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .manifesto p{color:var(--ink)}}
+.manifesto p mark{background:linear-gradient(transparent 60%,var(--yellow) 60%);color:inherit}
+
+.grid-ch{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.card-ch{display:flex;flex-direction:column;gap:8px;text-decoration:none;padding:20px;border-radius:var(--r);border:1px solid var(--line);background:var(--bg);transition:transform .15s,border-color .15s;position:relative;min-height:150px}
+.card-ch:hover{transform:translateY(-2px);border-color:var(--navy)}
+.card-ch .n{font-family:var(--display);font-weight:700;font-size:40px;line-height:1;color:var(--brown)}
+.card-ch b{font-family:var(--display);font-size:22px;line-height:1.1;color:var(--ink)}
+.card-ch small{color:var(--muted);font-size:14px;line-height:1.4}
+.card-ch .done{position:absolute;top:16px;right:16px;font-size:12px;font-weight:800;color:var(--ok);background:var(--ok-bg);padding:3px 9px;border-radius:99px}
+.card-ch.feat{background:var(--yellow);border-color:var(--yellow)}
+.card-ch.feat .n,.card-ch.feat b,.card-ch.feat small{color:var(--on-yellow)}
+.card-ch.dark{background:var(--navy);border-color:var(--navy)}
+.card-ch.dark .n{color:var(--yellow)}
+.card-ch.dark b,.card-ch.dark small{color:var(--on-navy)}
+
+/* ---------- Values ---------- */
+.values{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:24px}
+.val{text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:var(--r);padding:16px 18px;display:flex;flex-direction:column;gap:6px;transition:background .2s,border-color .2s}
+.val .vt{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:21px;color:var(--ink)}
+.val .vt svg{width:18px;height:18px;flex:none;transition:transform .2s;color:var(--brown)}
+.val .vd{color:var(--muted);font-size:15.5px;line-height:1.5}
+.val[aria-expanded="false"] .vd{display:none}
+.val[aria-expanded="true"]{background:var(--navy);border-color:var(--navy)}
+.val[aria-expanded="true"] .vt{color:var(--yellow)}
+.val[aria-expanded="true"] .vt svg{transform:rotate(45deg);color:var(--yellow)}
+.val[aria-expanded="true"] .vd{color:var(--on-navy)}
+.hint{font-size:14px;color:var(--muted);margin-top:10px;display:flex;align-items:center;gap:6px}
+
+/* ---------- Pillars stepper ---------- */
+.pill-nav{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
+.pill-nav button{width:52px;height:52px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);font-family:var(--display);font-weight:700;font-size:24px;padding-top:4px;color:var(--ink)}
+.pill-nav button[aria-selected="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
+.pill-panel{margin-top:14px;padding:26px 24px;border-radius:var(--r);background:var(--navy);color:var(--on-navy);min-height:200px}
+.pill-panel .pt{font-family:var(--display);font-weight:700;font-size:clamp(30px,6vw,44px);color:var(--yellow);line-height:1}
+.pill-panel p{margin-top:14px;font-size:18px}
+.pill-panel .pn{display:flex;justify-content:space-between;margin-top:22px;gap:10px}
+.pill-panel .pn button{background:rgba(255,255,255,.1);border:0;border-radius:99px;padding:9px 16px;font-weight:800;color:var(--on-navy);font-size:14px}
+
+/* ---------- Swap phrase ---------- */
+.swap{margin-top:28px;border-radius:var(--r);border:1.5px dashed var(--line);padding:22px}
+.swap .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+.swap .bad{font-family:var(--display);font-weight:700;font-size:24px;color:var(--no);text-decoration:line-through;text-decoration-thickness:3px}
+.swap .arrow{color:var(--muted)}
+.swap .good{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.2;color:var(--ok);min-height:1.2em}
+.swap button{margin-top:16px}
+
+/* ---------- Segmented ---------- */
+.seg{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.seg button{border:1.5px solid var(--line);background:var(--bg);border-radius:99px;padding:10px 18px;font-weight:800;font-size:15px;color:var(--ink)}
+.seg button[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.seg-panel{margin-top:14px;border-radius:var(--r);background:var(--mist);padding:22px 24px;display:grid;gap:10px}
+.seg-panel .need{font-family:var(--display);font-weight:700;font-size:26px;color:var(--ink);line-height:1.15}
+.seg-panel .need span{color:var(--brown)}
+
+/* ---------- Details / accordions ---------- */
+details.acc{border:1px solid var(--line);border-radius:var(--r);background:var(--bg)}
+details.acc + details.acc{margin-top:10px}
+details.acc summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;gap:14px}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary .st{flex:1;min-width:0}
+details.acc summary .st b{display:block;font-family:var(--display);font-size:21px;line-height:1.15}
+details.acc summary .st small{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+details.acc summary .chev{width:34px;height:34px;flex:none;border-radius:99px;background:var(--mist);display:grid;place-items:center;transition:transform .2s}
+details.acc summary .chev svg{width:16px;height:16px}
+details.acc[open] summary .chev{transform:rotate(180deg);background:var(--yellow);color:var(--on-yellow)}
+details.acc .body{padding:0 20px 20px;display:flex;flex-direction:column;gap:12px}
+details.acc .body p{max-width:65ch}
+.acc-group{margin-top:22px}
+.badge-n{flex:none;font-family:var(--display);font-weight:700;font-size:15px;color:var(--brown);min-width:34px}
+
+/* ---------- Checklists ---------- */
+.check{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
+.check li label{display:flex;gap:12px;align-items:flex-start;padding:10px 8px;border-radius:10px;cursor:pointer}
+.check li label:hover{background:var(--mist)}
+.check input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);margin:1px 0 0;display:grid;place-items:center;background:var(--bg);cursor:pointer}
+.check input:checked{background:var(--ok);border-color:var(--ok)}
+.check input:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:translate(0,-1px) rotate(45deg)}
+.check input:checked + span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.check .rule{display:block;margin-top:4px;font-size:15px;font-weight:700;color:var(--ink);text-decoration:none}
+.check input:checked + span .rule{text-decoration:none}
+.tagp{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--pend);background:var(--pend-bg);padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:2px;white-space:nowrap}
+.rulebox{border-radius:12px;background:var(--ok-bg);padding:14px 16px}
+.rulebox b.k{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ok);margin-bottom:4px;font-family:var(--display)}
+.example{border-left:4px solid var(--yellow);padding:6px 0 6px 14px;color:var(--ink)}
+.example b{font-family:var(--display);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown);display:block}
+.mini-prog{font-size:13px;font-weight:800;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* ---------- Rules grid (processes key rules) ---------- */
+.rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:22px}
+.rule-t{border-radius:var(--r);padding:18px;background:var(--navy);color:var(--on-navy);display:flex;flex-direction:column;gap:6px}
+.rule-t b{font-family:var(--display);font-size:clamp(24px,6vw,34px);overflow-wrap:anywhere;line-height:1;color:var(--yellow)}
+.rule-t span{font-size:14.5px;line-height:1.4}
+
+/* ---------- Day timeline ---------- */
+.day{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.day::before{content:"";position:absolute;left:0;right:0;top:27px;height:3px;background:var(--line)}
+.slot{position:relative;padding-right:12px}
+.slot .dot{width:56px;height:56px;border-radius:99px;background:var(--bg);border:3px solid var(--navy);display:grid;place-items:center;position:relative;z-index:1}
+.slot .dot svg{width:24px;height:24px;color:var(--navy)}
+:root[data-theme="dark"] .slot .dot svg{color:var(--yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .slot .dot svg{color:var(--yellow)}}
+.slot.hl .dot{background:var(--yellow);border-color:var(--yellow)}
+.slot.hl .dot svg{color:var(--on-yellow)!important}
+.slot b{display:block;font-family:var(--display);font-size:30px;line-height:1;margin-top:14px;color:var(--ink)}
+.slot .l{display:block;font-weight:800;margin-top:6px}
+.slot small{display:block;color:var(--muted);font-size:14px;line-height:1.45;margin-top:4px}
+@media (max-width:640px){
+  .day{grid-template-columns:1fr;gap:18px}
+  .day::before{left:27px;right:auto;top:0;bottom:0;width:3px;height:auto}
+  .slot{display:grid;grid-template-columns:56px 1fr;column-gap:16px;padding-right:0}
+  .slot .dot{grid-row:span 4}
+  .slot b{margin-top:6px}
+}
+
+/* ---------- Situations ---------- */
+.search{display:flex;align-items:center;gap:10px;border:2px solid var(--navy);border-radius:99px;padding:6px 8px 6px 18px;margin-top:22px;background:var(--bg)}
+:root[data-theme="dark"] .search{border-color:var(--line)}
+.search svg{width:20px;height:20px;flex:none;color:var(--muted)}
+.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:17px;color:var(--ink);padding:8px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips button{border:1px solid var(--line);background:var(--bg);border-radius:99px;padding:6px 14px;font-size:14px;font-weight:700;color:var(--ink)}
+.chips button[aria-pressed="true"]{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
+.sit-list{margin-top:18px}
+.src{font-size:13px;font-weight:800;color:var(--brown);letter-spacing:.02em}
+.empty{padding:24px;border-radius:var(--r);background:var(--mist);margin-top:18px}
+
+/* ---------- Quiz ---------- */
+.quiz{margin-top:24px;border-radius:20px;background:var(--navy);color:var(--on-navy);padding:28px 24px;position:relative;overflow:hidden}
+.quiz .qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:800;font-size:14px;font-variant-numeric:tabular-nums}
+.quiz .qbar{height:6px;border-radius:99px;background:rgba(255,255,255,.14);margin-top:10px;overflow:hidden}
+.quiz .qbar i{display:block;height:100%;background:var(--yellow);width:0;transition:width .3s}
+.quiz h3{font-size:clamp(24px,5vw,32px);margin-top:22px;color:var(--on-navy)}
+.opts{display:grid;gap:10px;margin-top:20px}
+.opt{text-align:left;border:1.5px solid rgba(255,255,255,.28);background:rgba(255,255,255,.04);border-radius:14px;padding:14px 16px;font-weight:700;font-size:16px;color:var(--on-navy);display:flex;gap:12px;align-items:center}
+.opt .l{flex:none;width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.12);display:grid;place-items:center;font-family:var(--display);padding-top:2px}
+.opt:hover:not([disabled]){border-color:var(--yellow)}
+.opt[disabled]{cursor:default}
+.opt.right{background:#1d7a4c;border-color:#1d7a4c}
+.opt.wrong{background:#9e2a30;border-color:#9e2a30}
+.fb{margin-top:16px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.08);font-size:15.5px}
+.fb b{color:var(--yellow)}
+.quiz .qnext{margin-top:18px}
+.score{font-family:var(--display);font-weight:700;font-size:96px;line-height:1;color:var(--yellow);margin-top:10px;font-variant-numeric:tabular-nums}
+
+/* ---------- Termo ---------- */
+.termo{margin-top:24px;border:1.5px solid var(--line);border-radius:20px;padding:26px 22px;display:grid;gap:16px}
+.field{display:grid;gap:6px}
+.field label{font-weight:800;font-size:14px}
+.field input{font:inherit;font-size:17px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.agree{display:flex;gap:12px;align-items:flex-start;font-weight:700}
+.agree input{width:24px;height:24px;flex:none;margin-top:2px;accent-color:var(--navy)}
+.cert{border-radius:20px;background:var(--navy);color:var(--on-navy);padding:30px 24px;margin-top:20px;position:relative;overflow:hidden}
+.cert .eyebrow{color:var(--yellow)}
+.cert h3{font-size:clamp(28px,6vw,40px);margin-top:10px;color:var(--on-navy)}
+.cert p{margin-top:12px;opacity:.92}
+.cert .who{font-family:var(--display);font-weight:700;font-size:26px;margin-top:18px;color:var(--yellow)}
+.err{color:var(--no);font-weight:700;font-size:15px}
+
+/* ---------- Pager & footer ---------- */
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:56px}
+.pager a{display:flex;flex-direction:column;gap:2px;text-decoration:none;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;min-width:0}
+.pager a small{color:var(--muted);font-size:13px;font-weight:700}
+.pager a b{font-family:var(--display);font-size:20px;line-height:1.15}
+.pager a.next{text-align:right;background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
+.pager a.next small{color:var(--yellow)}
+.pager a.solo{grid-column:2}
+footer.foot{border-top:1px solid var(--line);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:13.5px}
+footer.foot .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer.foot b{color:var(--brown);font-weight:800}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:99px;font-weight:800;font-size:14px;z-index:50}
+@media (max-width:820px){.grid-ch{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){
+  .grid-ch{grid-template-columns:1fr}
+  body{font-size:16.5px}
+  .brand span{display:none}
+  .chap-head .big{font-size:150px;bottom:-28px}
+}
+</style>
+
+</head>
+<body>
+<!-- ============ TOPBAR ============ -->
+<header class="top gut">
+  <div class="in">
+    <a class="brand" href="#inicio" aria-label="Início do manual">
+      <img src="logo.jpg" alt="Auto Peças Fernando">
+      <span>Manual de Conduta</span>
+    </a>
+    <div class="sp"></div>
+    <span class="pill-prog" id="topProg">0 de 7 lidos</span>
+    <button class="menu-btn" id="openMenu" aria-haspopup="dialog" aria-controls="drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+      Capítulos
+    </button>
+  </div>
+</header>
+<div class="bar"><i id="barFill"></i></div>
+
+<div class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Capítulos do manual">
+  <nav>
+    <div class="dh"><b>Capítulos</b><button class="x" id="closeMenu" aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <a class="ch" href="#inicio"><span class="n">↖</span><span class="t">Início</span></a>
+    <a class="ch" href="#boas-vindas"><span class="n">01</span><span class="t">Boas-vindas<small>Seções 1 a 3 · o manual e a nossa história</small></span></a>
+    <a class="ch" href="#cultura"><span class="n">02</span><span class="t">Nossa cultura<small>Seções 4 a 6 · valores e postura</small></span></a>
+    <a class="ch" href="#atendimento"><span class="n">03</span><span class="t">Atendimento<small>Seções 7 a 11 · cliente, pilares, trocas e garantias</small></span></a>
+    <a class="ch" href="#rotina"><span class="n">04</span><span class="t">Rotina e convivência<small>Seções 12 a 17 · uniforme, horários, respeito, celular</small></span></a>
+    <a class="ch" href="#cuidado"><span class="n">05</span><span class="t">Cuidado e segurança<small>Seções 18 a 22 · estoque, parceiros, saúde, comunicação</small></span></a>
+    <a class="ch" href="#processos"><span class="n">06</span><span class="t">Processos da loja<small>Checklists do dia a dia</small></span></a>
+    <a class="ch" href="#termo"><span class="n">07</span><span class="t">Termo de ciência<small>Seção 23 · meu compromisso</small></span></a>
+    <div class="tools">
+      <a href="#situacoes">O que eu faço se…? <span>→</span></a>
+      <a href="#quiz">Quiz: teste o que aprendeu <span>→</span></a>
+    </div>
+  </nav>
+</div>
+
+<main>
+
+<!-- ============ INÍCIO ============ -->
+<section class="view" id="v-inicio" data-view="inicio">
+  <div class="hero gut">
+    <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap">
+      <span class="logo"><img src="logo.jpg" alt="Auto Peças Fernando"></span>
+      <h1>Manual de<em>Conduta</em></h1>
+      <p class="sub">Documento interno criado para orientar a postura, fortalecer a cultura da empresa e apoiar o dia a dia da equipe no atendimento, na organização, na convivência e no cuidado com a empresa.</p>
+      <div class="cta">
+        <a class="btn y" href="#boas-vindas">Começar a leitura <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn g" href="#situacoes">O que eu faço se…?</a>
+      </div>
+      <p class="tag">Versão interna · Material de referência para integração e alinhamento da equipe</p>
+    </div>
+  </div>
+
+  <div class="gut">
+    <div class="wrap" style="max-width:1000px">
+      <div class="manifesto">
+        <p>Conduta não é apenas seguir regras. Conduta é a forma como cada pessoa <mark>representa a empresa</mark> quando atende um cliente, conversa com um colega, cuida de uma peça, registra uma venda ou resolve um problema.</p>
+        <p style="font-family:var(--body);font-weight:400;font-size:18px;color:var(--muted);margin-top:16px;max-width:60ch">Por isso, este manual foi pensado para ser um guia prático, claro e aplicável à rotina da loja. Leia um capítulo por vez, no seu ritmo. O seu progresso fica salvo neste aparelho.</p>
+      </div>
+
+      <div class="grid-ch" id="chapterGrid">
+        <a class="card-ch" href="#boas-vindas" data-ch="boas-vindas"><span class="n">01</span><b>Boas-vindas</b><small>Para que serve o manual e a nossa história</small></a>
+        <a class="card-ch" href="#cultura" data-ch="cultura"><span class="n">02</span><b>Nossa cultura</b><small>Valores, postura esperada e o que não combina com a gente</small></a>
+        <a class="card-ch" href="#atendimento" data-ch="atendimento"><span class="n">03</span><b>Atendimento</b><small>Os 5 pilares, tipos de cliente, trocas e garantias</small></a>
+        <a class="card-ch" href="#rotina" data-ch="rotina"><span class="n">04</span><b>Rotina e convivência</b><small>Uniforme, horários, atestados, respeito e celular</small></a>
+        <a class="card-ch" href="#cuidado" data-ch="cuidado"><span class="n">05</span><b>Cuidado e segurança</b><small>Peças, estoque, parceiros, saúde e comunicação</small></a>
+        <a class="card-ch" href="#processos" data-ch="processos"><span class="n">06</span><b>Processos da loja</b><small>Checklists de abertura, venda, troca, estoque e mais</small></a>
+        <a class="card-ch dark" href="#situacoes"><span class="n">?</span><b>O que eu faço se…</b><small>Busque uma situação do dia a dia e veja a resposta</small></a>
+        <a class="card-ch feat" href="#quiz"><span class="n">10</span><b>Quiz rápido</b><small>10 perguntas para fixar as regras mais importantes</small></a>
+        <a class="card-ch" href="#termo" data-ch="termo"><span class="n">07</span><b>Termo de ciência</b><small>Confirme que leu e compreendeu o manual</small></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 BOAS-VINDAS ============ -->
+<section class="view" id="v-boas-vindas" data-view="boas-vindas" hidden>
+  <div class="chap-head gut"><div class="wrap">
+    <span class="eyebrow">Capítulo 01</span>
+    <h1>Boas-vindas</h1>
+    <p>O que é este manual, como usar e quem é a Auto Peças Fernando.</p>
+    <span class="rule"></span>
+    <span class="big" aria-hidden="true">01</span>
+  </div></div>
+  <div class="gut"><div class="wrap">
+
+    <article class="sec">
+      <span class="sec-tag">Seção 1</span>
+      <h2>Apresentação do manual</h2>
+      <p class="lead">Este manual foi preparado para apoiar o dia a dia da Auto Peças Fernando e para ajudar cada colaborador a entender, de forma clara, qual é a postura esperada dentro da empresa.</p>
+      <div class="stack">
+        <p>Ele reúne orientações sobre atendimento, convivência, responsabilidade, organização, uso adequado dos recursos da loja e compromisso com a cultura da empresa.</p>
+        <p>Mais do que um documento formal, este manual deve ser visto como um guia prático. A proposta é facilitar o alinhamento da equipe, reforçar boas condutas e contribuir para um ambiente de trabalho mais respeitoso, organizado e profissional. Quando a equipe conhece melhor o que a empresa espera, o trabalho fica mais claro, a comunicação melhora e o atendimento ao cliente se fortalece.</p>
+        <p>Este material também dialoga com pontos importantes do treinamento realizado com a equipe, especialmente aqueles ligados ao primeiro contato com o cliente, à experiência de atendimento, à postura profissional e aos valores que a empresa deseja viver todos os dias.</p>
+      </div>
+      <figure class="figure"><img src="apresentacao.jpg" alt="As gestoras da Auto Peças Fernando apresentam o manual: orientações sobre postura profissional, atendimento, respeito, organização e uso correto dos recursos da empresa." loading="lazy"></figure>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 2</span>
+      <h2>Como usar este manual</h2>
+      <p class="lead">Consulte sempre que houver dúvida sobre a forma mais adequada de agir no trabalho. Ele serve para a integração de novos colaboradores, para momentos de alinhamento e como apoio contínuo para a equipe.</p>
+      <ol class="steps">
+        <li><span>Leia o material com atenção e, sempre que necessário, retome os pontos que tiverem relação com sua rotina.</span></li>
+        <li><span>Use o conteúdo como referência para o atendimento, para a convivência com a equipe e para o cuidado com os processos da loja.</span></li>
+        <li><span>Em caso de dúvida, procure sua liderança ou o RH. O objetivo não é gerar medo, e sim dar direção e fortalecer uma cultura mais clara e mais coerente.</span></li>
+        <li><span>Lembre-se: conhecer o manual não é suficiente por si só. O mais importante é colocar essas orientações em prática todos os dias.</span></li>
+      </ol>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 3</span>
+      <h2>Conhecendo a Auto Peças Fernando</h2>
+      <figure class="figure"><img src="historia.jpg" alt="As irmãs gestoras contam a história da empresa: mais de 30 anos no mercado, valores sólidos transmitidos de geração em geração." loading="lazy"></figure>
+      <div class="values" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
+        <div class="note navy" style="margin-top:0"><b class="k">Missão</b><p id="missao" style="opacity:.75">A empresa vai preencher a sua missão aqui.</p></div>
+        <div class="note navy" style="margin-top:0"><b class="k">Visão</b><p id="visao" style="opacity:.75">A empresa vai preencher a sua visão aqui.</p></div>
+      </div>
+    </article>
+
+    <nav class="pager"><a href="#inicio"><small>← Voltar</small><b>Início</b></a><a class="next" href="#cultura"><small>Próximo capítulo →</small><b>Nossa cultura</b></a></nav>
+  </div></div>
+</section>
+
+<!-- ============ 02 CULTURA ============ -->
+<section class="view" id="v-cultura" data-view="cultura" hidden>
+  <div class="chap-head gut"><div class="wrap">
+    <span class="eyebrow">Capítulo 02</span>
+    <h1>Nossa cultura</h1>
+    <p>Os valores que a gente vive no dia a dia, a postura esperada e o que não combina com a empresa.</p>
+    <span class="rule"></span>
+    <span class="big" aria-hidden="true">02</span>
+  </div></div>
+  <div class="gut"><div class="wrap">
+
+    <article class="sec">
+      <span class="sec-tag">Seção 4</span>
+      <h2>Valores da empresa no dia a dia</h2>
+      <p class="lead">No treinamento realizado com a equipe, ficaram evidentes algumas atitudes que são valorizadas no cotidiano da Auto Peças Fernando. Esses valores não devem aparecer apenas em discursos, mas principalmente na forma como cada pessoa trabalha, atende, se comunica e cuida da empresa.</p>
+      <p class="hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 11V6a2 2 0 1 1 4 0v5m0-2a2 2 0 1 1 4 0v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L3.5 13a1.8 1.8 0 0 1 3-2l1.5 2"/></svg>Toque em cada valor para ver o que ele significa na prática.</p>
+      <div class="values" id="values"></div>
+      <figure class="figure"><img src="valores.jpg" alt="As gestoras resumem os valores: cooperação, pertencimento, iniciativa, boa vontade, educação, organização, respeito, relacionamento interpessoal e bom atendimento ao cliente." loading="lazy"></figure>
+      <div class="note navy">
+        <b class="k">O que faz um colaborador ser reconhecido</b>
+        <p>Os profissionais que mais se destacam não são apenas os que executam tarefas. São aqueles que demonstram comprometimento, disciplina, proatividade, respeito, responsabilidade e constância no dia a dia. Em outras palavras, são pessoas em quem a empresa pode confiar.</p>
+      </div>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 5</span>
+      <h2>Cultura e postura esperada</h2>
+      <p class="lead">Toda empresa tem uma cultura. Cultura é o jeito como as pessoas se tratam, como os problemas são resolvidos, como os processos acontecem e como os clientes são atendidos. Mesmo quando ninguém fala sobre ela, a cultura aparece nas escolhas do dia a dia.</p>
+      <div class="stack">
+        <p>Na Auto Peças Fernando, a cultura desejada passa por <b>respeito, responsabilidade, disciplina, organização, boa postura e foco no cliente</b>. Isso significa que cada colaborador tem participação direta na construção do ambiente de trabalho. Cada atitude fortalece ou enfraquece a cultura da empresa.</p>
+        <p>Por isso, espera-se que a equipe atue com coerência entre o que fala e o que faz. Não adianta atender bem um cliente e tratar mal um colega. Não adianta demonstrar interesse em vender e desorganizar o setor.</p>
+      </div>
+      <p class="quote">Cultura é o conjunto de <mark>pequenas atitudes</mark> repetidas todos os dias.</p>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 6</span>
+      <h2>Comportamentos que não combinam com a cultura</h2>
+      <p class="lead">Assim como existem atitudes valorizadas, também existem comportamentos que não combinam com o ambiente que a empresa deseja construir. Reconhecer esses comportamentos ajuda a evitar desgastes, conflitos e prejuízos para a equipe e para a própria loja.</p>
+      <ul class="clean" data-icon="no">
+        <li>Falta de respeito com colegas, clientes, fornecedores ou liderança.</li>
+        <li>Desonestidade, omissão de informações importantes e atitudes antiéticas.</li>
+        <li>Não seguir processos, regras internas ou orientações recebidas. <a href="#processos" style="font-weight:800;color:var(--brown)">Ver os processos da loja →</a></li>
+        <li>Decisões impulsivas sem alinhamento, gerando erros e retrabalho.</li>
+        <li>Linguagem ríspida, ironias, brincadeiras inadequadas ou posturas que exponham outras pessoas.</li>
+        <li>Descuido com peças, sistemas, estoque, documentos, recursos da empresa e ambiente de trabalho.</li>
+        <li>Postura de indiferença diante do cliente, da equipe ou dos problemas do setor.</li>
+      </ul>
+    </article>
+
+    <nav class="pager"><a href="#boas-vindas"><small>← Anterior</small><b>Boas-vindas</b></a><a class="next" href="#atendimento"><small>Próximo capítulo →</small><b>Atendimento</b></a></nav>
+  </div></div>
+</section>
+
+<!-- ============ 03 ATENDIMENTO ============ -->
+<section class="view" id="v-atendimento" data-view="atendimento" hidden>
+  <div class="chap-head gut"><div class="wrap">
+    <span class="eyebrow">Capítulo 03</span>
+    <h1>Atendimento</h1>
+    <p>Como receber, ouvir e orientar o cliente, e como agir em descontos, trocas, garantias e entrega de peças.</p>
+    <span class="rule"></span>
+    <span class="big" aria-hidden="true">03</span>
+  </div></div>
+  <div class="gut"><div class="wrap">
+
+    <article class="sec">
+      <span class="sec-tag">Seção 7</span>
+      <h2>Atendimento e experiência do cliente</h2>
+      <p class="quote">O cliente não compara apenas preço. Ele compara <mark>sensações e experiências.</mark></p>
+      <div class="stack" style="margin-top:22px">
+        <p>Essa foi uma ideia central reforçada no treinamento realizado com a equipe. Muitas vezes, a forma como o cliente é recebido influencia sua percepção antes mesmo da explicação técnica sobre o produto.</p>
+        <p>Quando o cliente entra na loja, ele observa se foi bem-vindo, se será ouvido, se pode confiar e se será tratado com respeito. Por isso, o atendimento não é apenas uma tarefa operacional. Ele é parte da imagem da empresa. A maneira como a equipe atende comunica seriedade, cuidado, organização e profissionalismo.</p>
+        <p>Atendimento, de verdade, envolve experiência emocional, construção de confiança, comunicação clara e representação da cultura da empresa. <b>Educação é o mínimo. Conexão, presença e responsabilidade fazem a diferença.</b></p>
+      </div>
+      <figure class="figure"><img src="atendimento.jpg" alt="Ilustração de um vendedor da loja: no primeiro contato, demonstre presença, escute com atenção, fale com clareza e busque resolver ou encaminhar a necessidade do cliente." loading="lazy"></figure>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 8</span>
+      <h2>Os 5 pilares do primeiro contato</h2>
+      <p class="lead">No primeiro contato com o cliente, alguns elementos fazem grande diferença. Eles ajudam a criar segurança, reduzem ruídos na comunicação e contribuem para uma experiência mais positiva.</p>
+      <div class="pill-nav" role="tablist" aria-label="Os 5 pilares" id="pillNav"></div>
+      <div class="pill-panel" id="pillPanel" role="tabpanel" aria-live="polite"></div>
+
+      <div class="swap">
+        <span class="sec-tag">Frase prática</span>
+        <p style="margin-top:6px">Sempre que possível, troque esta expressão por uma das alternativas. Essa mudança simples melhora muito a experiência do cliente.</p>
+        <div class="row"><span class="bad">“Isso não é comigo”</span></div>
+        <div class="row"><span class="arrow">troque por</span><span class="good" id="goodPhrase" aria-live="polite">“Eu vou verificar para você”</span></div>
+        <button class="btn n" id="swapBtn" type="button">Ver outra forma de dizer</button>
+      </div>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 9</span>
+      <h2>Tipos de cliente e postura adequada</h2>
+      <p class="lead">Cada cliente chega com um estilo diferente. Entender isso ajuda a ajustar a forma de conduzir o atendimento sem perder o respeito, a clareza e o profissionalismo.</p>
+      <div class="seg" role="tablist" aria-label="Tipos de cliente" id="segNav">
+        <button role="tab" aria-selected="true" data-k="0">Objetivo</button>
+        <button role="tab" aria-selected="false" data-k="1">Inseguro</button>
+        <button role="tab" aria-selected="false" data-k="2">Irritado</button>
+      </div>
+      <div class="seg-panel" id="segPanel" role="tabpanel" aria-live="polite"></div>
+      <div class="note">
+        <b class="k">Frase estratégica</b>
+        <p>“Eu entendo que isso é importante para você” ou “deixa eu te ouvir com calma para te ajudar da melhor forma” são frases que reduzem tensão e abrem espaço para uma conversa mais produtiva.</p>
+      </div>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 10</span>
+      <h2>Erros mais comuns no atendimento</h2>
+      <p class="lead">Também é importante reconhecer atitudes que prejudicam o atendimento e enfraquecem a imagem profissional da equipe.</p>
+      <ul class="clean" data-icon="no">
+        <li>Atendimento automático, sem presença e sem atenção real ao cliente.</li>
+        <li>Julgar o cliente pela aparência, pela forma de falar ou pela pergunta que traz.</li>
+        <li>Falar antes de ouvir, interromper ou presumir o que o cliente quer.</li>
+        <li>Demonstrar impaciência, pressa excessiva ou postura defensiva.</li>
+        <li>Usar linguagem ríspida, confusa ou incompleta.</li>
+        <li>Transferir o problema sem assumir qualquer responsabilidade pelo direcionamento.</li>
+      </ul>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 11</span>
+      <h2>Atendimento como posicionamento profissional</h2>
+      <div class="stack">
+        <p class="lead" style="margin-top:0">A forma de atender impacta a reputação da empresa, a fidelização do cliente, a indicação para outras pessoas e o clima organizacional. Mas impacta também a imagem profissional de quem atende.</p>
+        <p>Pessoas que resolvem, explicam bem, mantêm boa postura e lidam com responsabilidade tendem a ser lembradas de forma positiva dentro e fora da empresa. Por isso, o atendimento também é uma forma de posicionamento profissional. Ele mostra maturidade, compromisso e capacidade de representar bem a empresa.</p>
+      </div>
+      <div class="acc-group">
+        <details class="acc">
+          <summary><span class="badge-n">11.1</span><span class="st"><b>Descontos, negociações e promessas ao cliente</b><small>Só prometa o que a empresa consegue entregar</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="body">
+            <p>Descontos, condições especiais, prazos diferenciados, trocas, garantias ou qualquer negociação fora do padrão devem seguir as orientações da empresa e, quando necessário, ser autorizados pela liderança.</p>
+            <p>O colaborador não deve prometer ao cliente aquilo que não tem certeza de que poderá cumprir. Antes de confirmar preço, prazo, disponibilidade, entrega ou garantia, é importante verificar corretamente as informações.</p>
+            <div class="rulebox"><b class="k">Guarde isto</b>A confiança do cliente é construída quando a empresa promete apenas aquilo que consegue entregar.</div>
+          </div>
+        </details>
+        <details class="acc">
+          <summary><span class="badge-n">11.2</span><span class="st"><b>Troca, devolução e garantia</b><small>Educação sempre, mesmo quando a resposta é não</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="body">
+            <p>As solicitações de troca, devolução ou garantia devem ser tratadas com educação, atenção e respeito. Mesmo quando a solicitação não puder ser atendida, o cliente deve receber uma explicação clara e profissional.</p>
+            <p>O colaborador deve verificar as condições da peça, nota fiscal, prazo, embalagem, uso do produto e demais orientações internas antes de confirmar qualquer procedimento.</p>
+            <p>Em caso de dúvida, a situação deve ser encaminhada à liderança. Nenhum colaborador deve assumir compromissos sobre troca, devolução ou garantia sem seguir os critérios definidos pela empresa.</p>
+            <p><a href="#processos" style="font-weight:800;color:var(--brown)">Ver as regras de troca e garantia nos processos →</a></p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary><span class="badge-n">11.3</span><span class="st"><b>Cuidado com estoque, separação e entrega de peças</b><small>A pressa não pode comprometer a qualidade</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="body">
+            <p>A separação, conferência e entrega de peças devem ser feitas com atenção. Antes de entregar ou liberar um produto, confira:</p>
+            <ul class="clean" data-icon="ok" style="margin-top:0">
+              <li>Código</li><li>Descrição</li><li>Quantidade</li><li>Aplicação</li><li>Estado da peça</li><li>Demais informações necessárias</li>
+            </ul>
+            <p>Uma peça entregue de forma errada pode gerar retrabalho, insatisfação do cliente, perda de venda e prejuízo para a empresa.</p>
+            <p>Quando houver dúvida sobre aplicação, compatibilidade ou identificação da peça, o colaborador deve buscar apoio antes de finalizar o atendimento.</p>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <nav class="pager"><a href="#cultura"><small>← Anterior</small><b>Nossa cultura</b></a><a class="next" href="#rotina"><small>Próximo capítulo →</small><b>Rotina e convivência</b></a></nav>
+  </div></div>
+</section>
+
+<!-- ============ 04 ROTINA ============ -->
+<section class="view" id="v-rotina" data-view="rotina" hidden>
+  <div class="chap-head gut"><div class="wrap">
+    <span class="eyebrow">Capítulo 04</span>
+    <h1>Rotina e convivência</h1>
+    <p>Apresentação pessoal, horários, atestados, respeito entre colegas e uso de celular e sistemas.</p>
+    <span class="rule"></span>
+    <span class="big" aria-hidden="true">04</span>
+  </div></div>
+  <div class="gut"><div class="wrap">
+
+    <article class="sec">
+      <span class="sec-tag">Seção 12</span>
+      <h2>Apresentação pessoal, uniforme e organização</h2>
+      <p class="lead">A apresentação pessoal também comunica profissionalismo. O colaborador representa a empresa diante do cliente e, por isso, sua imagem, seu cuidado e sua organização precisam estar de acordo com o ambiente de trabalho.</p>
+      <ul class="clean" data-icon="ok">
+        <li>O uso do uniforme, quando exigido pela empresa, deve ser respeitado durante toda a jornada de trabalho.</li>
+        <li>É esperado cuidado com higiene, aparência e conservação do uniforme.</li>
+        <li>Ao final do contrato, itens fornecidos pela empresa devem ser devolvidos conforme orientação interna.</li>
+        <li>A organização do balcão, do caixa, do estoque, das mesas e das áreas de uso comum faz parte da conduta esperada.</li>
+        <li>Ambiente limpo e organizado transmite cuidado, evita erros e melhora a rotina da equipe.</li>
+      </ul>
+
+      <h3><span class="sec-tag" style="display:block;margin-bottom:6px">Seção 12.1</span>Controle de jornada, almoço e café</h3>
+      <p style="margin-top:12px">O cumprimento da jornada faz parte da responsabilidade profissional de cada colaborador. Respeite os horários definidos pela empresa, registrando corretamente entrada, saída, intervalo e retorno, quando houver controle de ponto.</p>
+      <div class="day" aria-label="Como funciona o seu dia">
+        <div class="slot"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><b>Entrada</b><span class="l">Registre o ponto</span><small>Chegue no horário e pronto para começar.</small></div>
+        <div class="slot hl"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16a8 8 0 0 1-16 0zM8 4v3M12 3v4M16 4v3"/></svg></span><b>2 horas</b><span class="l">Almoço</span><small>Conforme a escala. Afaste-se das atividades e volte no horário combinado.</small></div>
+        <div class="slot hl"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16"/></svg></span><b>10 min</b><span class="l">Café, à tarde</span><small>Sem prejudicar o atendimento. Use com bom senso.</small></div>
+        <div class="slot"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg></span><b>Saída</b><span class="l">Registre o ponto</span><small>Entrada, saída, intervalo e retorno corretos.</small></div>
+      </div>
+      <div class="stack" style="margin-top:26px">
+        <p><b>Almoço:</b> o horário de almoço será de 2 horas, devendo ser cumprido conforme a escala ou orientação definida pela empresa. Durante esse período, o colaborador deverá se ausentar das atividades e retornar no horário combinado, contribuindo para a organização da rotina da loja e para o bom andamento do trabalho.</p>
+        <p><b>Café:</b> no período da tarde, será permitido um intervalo de 10 minutos para o café, conforme orientação da empresa e sem prejudicar o atendimento, as demandas do setor ou o funcionamento da loja. Esse momento deve ser usado com bom senso, evitando atrasos no retorno, barulho excessivo, desperdícios ou ausência prolongada do posto de trabalho.</p>
+        <p><b>Dúvidas:</b> sobre horários de entrada, saída, almoço, café, registro de ponto ou qualquer ajuste na jornada, procure sua liderança para receber a orientação correta.</p>
+      </div>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 13</span>
+      <h2>Relacionamento interpessoal, respeito e ética</h2>
+      <p class="lead">Uma empresa forte também se constrói pela forma como as pessoas convivem. Respeito, educação e ética não devem aparecer apenas no atendimento ao cliente, mas também no relacionamento entre colegas, liderança e demais parceiros.</p>
+      <ul class="clean" data-icon="ok">
+        <li>Trate todos com educação, respeito e bom senso.</li>
+        <li>Evite discussões desnecessárias, fofocas, ironias, brincadeiras inadequadas e exposição de colegas.</li>
+        <li>Quando houver problema, procure resolvê-lo com diálogo e da forma mais madura possível.</li>
+        <li>Críticas à empresa, aos serviços ou aos colegas devem ser tratadas internamente, com responsabilidade e foco em solução.</li>
+        <li>Se tiver uma sugestão para melhorar o trabalho, leve para a liderança ou para o RH de forma objetiva e respeitosa.</li>
+      </ul>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 14</span>
+      <h2>Diversidade, assédio e convivência saudável</h2>
+      <p class="lead">A Auto Peças Fernando não admite discriminação de qualquer natureza. Todas as pessoas devem ser tratadas com dignidade, independentemente de cargo, idade, sexo, raça, cor, religião, orientação sexual, condição social ou qualquer outra característica pessoal.</p>
+      <div class="note alert">
+        <b class="k">Não serão aceitos</b>
+        <p>Assédio moral ou sexual, humilhação, intimidação, constrangimento, ameaças ou comportamentos que gerem ambiente hostil e ofensivo. Esse tipo de conduta prejudica a saúde emocional, o clima de trabalho e a própria cultura da empresa.</p>
+      </div>
+      <div class="note navy">
+        <b class="k">Aconteceu com você ou você viu?</b>
+        <p>Comunique à liderança ou ao RH, para que a situação seja tratada com a devida seriedade.</p>
+      </div>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 15</span>
+      <h2>Jornada de trabalho, pontualidade e ausências</h2>
+      <p class="quote">Pontualidade é uma forma concreta de <mark>respeito</mark> à empresa, à equipe e ao cliente.</p>
+      <p style="margin-top:18px">Cumprir a jornada de trabalho e os horários definidos faz parte da responsabilidade profissional.</p>
+      <ul class="clean" data-icon="ok">
+        <li>Chegue no horário e esteja preparado para iniciar suas atividades.</li>
+        <li>Atrasos e ausências devem ser comunicados o quanto antes, conforme orientação da empresa.</li>
+        <li>Quando houver registro de ponto, o controle correto é responsabilidade do próprio colaborador.</li>
+        <li>Horas extras ou mudanças de jornada devem ocorrer apenas com alinhamento prévio e autorização da empresa.</li>
+        <li>Em atividades externas, a responsabilidade com horário e retorno às atividades permanece.</li>
+      </ul>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 16</span>
+      <h2>Atestados e faltas legais ou justificadas</h2>
+      <div class="rules" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+        <div class="rule-t"><b>48 horas</b><span>Prazo para entregar o atestado médico à empresa, conforme o procedimento interno.</span></div>
+      </div>
+      <div class="stack" style="margin-top:20px">
+        <p>Se o colaborador passar por atendimento médico e receber atestado, esse documento deve ser entregue à empresa conforme o procedimento interno. No manual-base utilizado, o prazo indicado é de até 48 horas, podendo a empresa validar ou reforçar internamente esse procedimento.</p>
+        <p>Além disso, existem faltas previstas em lei e situações justificadas, conforme a legislação trabalhista, como por exemplo:</p>
+      </div>
+      <ul class="clean" data-icon="dot">
+        <li>Falecimento de familiares, nos casos previstos em lei</li>
+        <li>Casamento</li>
+        <li>Nascimento de filho</li>
+        <li>Doação de sangue</li>
+        <li>Comparecimento à Justiça</li>
+        <li>Outras hipóteses legais</li>
+      </ul>
+      <p style="margin-top:16px">Sempre que houver dúvida, o ideal é procurar o RH para receber a orientação correta.</p>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 17</span>
+      <h2>Uso de celular, internet, e-mail e senhas</h2>
+      <p class="lead">Os recursos da empresa existem para apoiar o trabalho e devem ser usados com responsabilidade. Isso inclui celular quando relacionado à rotina, computadores, sistemas, internet, telefone e e-mail corporativo, quando houver.</p>
+      <ul class="clean" data-icon="ok">
+        <li>Durante o atendimento, o foco principal deve estar no cliente. O uso de celular para fins pessoais deve ser evitado e seguir as orientações internas da empresa.</li>
+        <li>Internet, e-mail e demais meios eletrônicos devem ser utilizados de forma profissional e responsável.</li>
+        <li>Se precisar se ausentar do computador ou do sistema, o ideal é encerrar ou bloquear o acesso para evitar uso indevido.</li>
+      </ul>
+      <ul class="clean" data-icon="no">
+        <li>Não é permitido acessar conteúdos inadequados, compartilhar materiais impróprios ou usar os recursos da empresa para fins indevidos.</li>
+        <li>Senhas são pessoais e intransferíveis. Não devem ser compartilhadas com colegas.</li>
+      </ul>
+    </article>
+
+    <nav class="pager"><a href="#atendimento"><small>← Anterior</small><b>Atendimento</b></a><a class="next" href="#cuidado"><small>Próximo capítulo →</small><b>Cuidado e segurança</b></a></nav>
+  </div></div>
+</section>
+
+<!-- ============ 05 CUIDADO ============ -->
+<section class="view" id="v-cuidado" data-view="cuidado" hidden>
+  <div class="chap-head gut"><div class="wrap">
+    <span class="eyebrow">Capítulo 05</span>
+    <h1>Cuidado e segurança</h1>
+    <p>Zelo com peças e patrimônio, conduta com parceiros, saúde, comunicação interna e o que acontece quando a conduta é violada.</p>
+    <span class="rule"></span>
+    <span class="big" aria-hidden="true">05</span>
+  </div></div>
+  <div class="gut"><div class="wrap">
+
+    <article class="sec">
+      <span class="sec-tag">Seção 18</span>
+      <h2>Cuidado com peças, estoque, documentos e patrimônio</h2>
+      <p class="lead">Trabalhar em uma autopeças exige atenção e zelo. Peças, mercadorias, documentos, registros, caixa, equipamentos, sistemas e demais recursos da empresa precisam ser tratados com cuidado. Pequenos descuidos podem gerar perdas, retrabalho, prejuízos e problemas no atendimento.</p>
+      <ul class="clean" data-icon="ok">
+        <li>Cuide bem das peças e mercadorias, evitando danos, trocas indevidas e desorganização.</li>
+        <li>Mantenha atenção em registros de venda, lançamentos, documentos e controles internos.</li>
+        <li>Evite desperdícios e trate o patrimônio da empresa com responsabilidade.</li>
+        <li>Em caso de erro, comunique rapidamente a liderança para que a situação seja corrigida com transparência.</li>
+        <li>Organização e zelo reduzem falhas e fortalecem a confiança da equipe e do cliente.</li>
+      </ul>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 19</span>
+      <h2>Conduta com clientes, fornecedores e parceiros</h2>
+      <p class="lead">O padrão de respeito e honestidade da empresa também deve aparecer na relação com clientes, fornecedores e demais parceiros. A forma como a equipe fala, negocia, esclarece dúvidas e conduz situações do dia a dia contribui diretamente para a imagem da Auto Peças Fernando.</p>
+      <div class="values" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+        <div class="note" style="margin-top:0"><b class="k">Com clientes</b><p>Agir com cordialidade, clareza, agilidade, ética e respeito.</p></div>
+        <div class="note" style="margin-top:0"><b class="k">Com fornecedores e parceiros</b><p>Manter postura profissional, honesta e coerente com os interesses da empresa.</p></div>
+        <div class="note" style="margin-top:0"><b class="k">Com colegas e liderança</b><p>Fortalecer uma relação de respeito, cooperação e boa comunicação.</p></div>
+      </div>
+      <div class="note alert"><b class="k">Atenção</b><p>Informações internas da empresa não devem ser usadas em benefício próprio ou de terceiros.</p></div>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 20</span>
+      <h2>Saúde e segurança no trabalho</h2>
+      <p class="lead">Cuidar da saúde e da segurança no trabalho é responsabilidade de todos. A empresa deve buscar oferecer condições adequadas de trabalho, e cada colaborador precisa cumprir sua parte com atenção e responsabilidade.</p>
+      <ul class="clean" data-icon="ok">
+        <li>Siga procedimentos internos e orientações de segurança aplicáveis à sua função.</li>
+        <li>Zele pela sua integridade física e pela integridade dos colegas.</li>
+        <li>Comunique situações de risco, falhas, acidentes ou quase acidentes.</li>
+        <li>Use corretamente os recursos, equipamentos e orientações fornecidos pela empresa.</li>
+      </ul>
+      <details class="acc" style="margin-top:22px">
+        <summary><span class="badge-n">20.1</span><span class="st"><b>Vacinação e exames</b><small>Cuidado preventivo com a saúde</small></span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+        <div class="body">
+          <p>A empresa reconhece a importância do cuidado preventivo com a saúde. Por isso, os colaboradores devem ficar atentos às campanhas oficiais de vacinação e às orientações de prevenção divulgadas pelos órgãos de saúde.</p>
+          <p>Conforme a legislação trabalhista, a empresa deve disponibilizar informações sobre campanhas oficiais de vacinação, sobre o HPV e sobre a prevenção dos cânceres de mama, colo do útero e próstata. Também deve orientar os colaboradores sobre o acesso aos serviços de diagnóstico e exames preventivos.</p>
+          <p>Quando houver necessidade de ausência para realização de exames preventivos previstos em lei, o colaborador deverá comunicar a empresa com antecedência sempre que possível e apresentar o comprovante de comparecimento ou documento equivalente. A legislação prevê a possibilidade de ausência, sem prejuízo do salário, para a realização de exames preventivos relacionados ao HPV e ao câncer, nos termos do art. 473 da CLT.</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 21</span>
+      <h2>Comunicação interna, dúvidas e sugestões</h2>
+      <p class="lead">A empresa valoriza sugestões de melhoria e entende que críticas construtivas podem contribuir para um ambiente melhor, processos mais claros e resultados mais consistentes.</p>
+      <div class="stack">
+        <p>Quando houver alguma observação importante, a orientação é trazer o assunto de forma respeitosa e responsável para a <b>liderança ou para o RH</b>.</p>
+        <p>Manter uma boa comunicação interna evita ruídos, reduz conflitos e ajuda a equipe a trabalhar com mais alinhamento.</p>
+      </div>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Seção 22</span>
+      <h2>Violação das condutas</h2>
+      <div class="stack">
+        <p class="lead" style="margin-top:0">O conhecimento e o cumprimento deste manual são responsabilidade de todos.</p>
+        <p>Quando uma conduta inadequada acontecer, a empresa poderá adotar as medidas disciplinares cabíveis, de acordo com a gravidade da situação e com as regras internas. O objetivo não é punir por punir, mas proteger a cultura, o ambiente de trabalho e a organização da empresa.</p>
+        <p>Também é importante lembrar que o silêncio diante de condutas graves pode prejudicar a equipe e a própria empresa. Por isso, sempre que necessário, procure orientação e use os canais internos disponíveis.</p>
+      </div>
+      <h3>Lembre-se</h3>
+      <figure class="figure"><img src="conduta.jpg" alt="Ilustração de um vendedor da loja: conduta aparece na pontualidade, no uso correto do uniforme, no cuidado com peças, documentos e sistemas, no respeito aos processos e na forma como tratamos colegas, clientes e fornecedores." loading="lazy"></figure>
+    </article>
+
+    <nav class="pager"><a href="#rotina"><small>← Anterior</small><b>Rotina e convivência</b></a><a class="next" href="#processos"><small>Próximo capítulo →</small><b>Processos da loja</b></a></nav>
+  </div></div>
+</section>
+
+<!-- ============ 06 PROCESSOS ============ -->
+<section class="view" id="v-processos" data-view="processos" hidden>
+  <div class="chap-head gut"><div class="wrap">
+    <span class="eyebrow">Capítulo 06</span>
+    <h1>Processos da loja</h1>
+    <p>Checklists para usar na rotina. Marque os itens conforme for fazendo: as marcações ficam salvas só neste aparelho.</p>
+    <span class="rule"></span>
+    <span class="big" aria-hidden="true">06</span>
+  </div></div>
+  <div class="gut"><div class="wrap">
+
+    <article class="sec">
+      <span class="sec-tag">Regras que já estão definidas</span>
+      <h2>Para não esquecer</h2>
+      <div class="rules">
+        <div class="rule-t"><b>24h</b><span>Prazo máximo para devolução</span></div>
+        <div class="rule-t"><b>Nota</b><span>Cupom ou nota fiscal é necessário sempre na troca</span></div>
+        <div class="rule-t"><b>Embalagem</b><span>Não aceitamos mercadoria com embalagem aberta ou danificada</span></div>
+        <div class="rule-t"><b>Instalada</b><span>Peça usada ou instalada não pode ser trocada nem devolvida</span></div>
+        <div class="rule-t"><b>Em dupla</b><span>Conferir a mercadoria em conjunto com outra pessoa na entrega</span></div>
+      </div>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Procedimentos</span>
+      <h2>Passo a passo de cada processo</h2>
+      <p class="hint" style="display:block">Itens marcados com <span class="tagp" style="margin:0">a definir</span> ainda vão receber a regra da empresa. Enquanto isso, siga a orientação da liderança.</p>
+      <div class="acc-group" id="procList"></div>
+      <button class="btn o" type="button" id="clearChecks" style="margin-top:18px">Desmarcar todos os itens</button>
+    </article>
+
+    <article class="sec">
+      <span class="sec-tag">Atenção</span>
+      <h2>Pontos importantes que não podem ser esquecidos</h2>
+      <ul class="steps" style="margin-top:22px">
+        <li><span>Anotar no <b>caderno de falta</b> a peça, de acordo com o fornecedor.</span></li>
+        <li><span>Sempre que mostrar uma peça para o cliente e ela não for vendida, <b>retorne com ela para o estoque</b>.</span></li>
+        <li><span>Quando colocar mercadoria para ser retirada, <b>identifique com os dados do comprador</b> e coloque um aviso de que já está em separação na expedição.</span></li>
+        <li><span><b>Vendas por encomenda:</b> analise, de acordo com o cliente e a peça, se deve ou não pedir uma entrada. Se sim, peça à gestora o valor para passar ao cliente. Nessas vendas, ligue rapidamente para o fornecedor para garantir agilidade e não perder a venda. É importante saber ano, modelo, marca e, se possível, ter até uma foto.</span></li>
+        <li><span>Um vendedor de alto desempenho <b>busca conhecimento</b> e aumenta suas vendas através dele: se comunica bem e tem boa postura para trazer confiança ao cliente.</span></li>
+        <li><span><b>Crediário para colaboradores</b> como benefício, com desconto em folha: deve ser autorizado pelos gestores, assim como as formas de parcelamento.</span></li>
+      </ul>
+    </article>
+
+    <nav class="pager"><a href="#cuidado"><small>← Anterior</small><b>Cuidado e segurança</b></a><a class="next" href="#termo"><small>Próximo capítulo →</small><b>Termo de ciência</b></a></nav>
+  </div></div>
+</section>
+
+<!-- ============ SITUAÇÕES ============ -->
+<section class="view" id="v-situacoes" data-view="situacoes" hidden>
+  <div class="chap-head gut"><div class="wrap">
+    <span class="eyebrow">Consulta rápida</span>
+    <h1>O que eu faço se…?</h1>
+    <p>Situações comuns da loja com a resposta que está no manual. Digite uma palavra ou toque em um tema.</p>
+    <span class="rule"></span>
+    <span class="big" aria-hidden="true">?</span>
+  </div></div>
+  <div class="gut"><div class="wrap">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="sitSearch" type="search" placeholder="Ex.: troca, atestado, senha, desconto" aria-label="Buscar situação">
+    </div>
+    <div class="chips" id="sitChips"></div>
+    <div class="sit-list" id="sitList"></div>
+    <p class="empty" id="sitEmpty" hidden>Não encontramos essa situação. Procure sua liderança ou o RH, como orienta o manual.</p>
+    <nav class="pager"><a href="#inicio"><small>← Voltar</small><b>Início</b></a><a class="next" href="#quiz"><small>Teste seus conhecimentos →</small><b>Quiz rápido</b></a></nav>
+  </div></div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="view" id="v-quiz" data-view="quiz" hidden>
+  <div class="chap-head gut"><div class="wrap">
+    <span class="eyebrow">Quiz</span>
+    <h1>Você já sabe?</h1>
+    <p>10 perguntas rápidas sobre as regras mais importantes do manual. Sem pegadinha: a cada resposta você vê o que o manual diz.</p>
+    <span class="rule"></span>
+    <span class="big" aria-hidden="true">10</span>
+  </div></div>
+  <div class="gut"><div class="wrap">
+    <div class="quiz" id="quiz" aria-live="polite"></div>
+    <nav class="pager"><a href="#situacoes"><small>← Consulta rápida</small><b>O que eu faço se…</b></a><a class="next" href="#termo"><small>Último passo →</small><b>Termo de ciência</b></a></nav>
+  </div></div>
+</section>
+
+<!-- ============ 07 TERMO ============ -->
+<section class="view" id="v-termo" data-view="termo" hidden>
+  <div class="chap-head gut"><div class="wrap">
+    <span class="eyebrow">Capítulo 07</span>
+    <h1>Termo de ciência</h1>
+    <p>Seção 23 · Termo de ciência e comprometimento.</p>
+    <span class="rule"></span>
+    <span class="big" aria-hidden="true">07</span>
+  </div></div>
+  <div class="gut"><div class="wrap">
+    <article class="sec">
+      <p class="quote" style="max-width:none;font-size:clamp(22px,4.4vw,30px);line-height:1.3">Declaro que recebi, li e compreendi o Manual de Conduta e Atendimento da Auto Peças Fernando. Comprometo-me a seguir as orientações apresentadas neste documento e a procurar esclarecimento sempre que tiver dúvidas sobre a conduta mais adequada a ser adotada em minha rotina de trabalho.</p>
+      <form class="termo" id="termoForm" novalidate>
+        <div class="field"><label for="tNome">Nome completo</label><input id="tNome" autocomplete="name" required></div>
+        <div class="field"><label for="tData">Data</label><input id="tData" type="date" required></div>
+        <label class="agree"><input id="tOk" type="checkbox"> Li e compreendi o manual e me comprometo a seguir as orientações.</label>
+        <p class="err" id="tErr" hidden>Preencha seu nome, a data e marque a confirmação.</p>
+        <div><button class="btn n" type="submit">Confirmar leitura</button></div>
+      </form>
+      <div class="cert" id="cert" hidden>
+        <span class="eyebrow">Leitura concluída</span>
+        <h3>Você faz parte da nossa história.</h3>
+        <p class="who" id="certName"></p>
+        <p id="certDate"></p>
+        <p style="font-size:14px;opacity:.75;margin-top:18px">Esta confirmação fica salva apenas neste aparelho. A assinatura oficial é feita no termo impresso: uma via fica com a empresa e a outra com o colaborador.</p>
+      </div>
+      <div class="note" style="margin-top:22px">
+        <b class="k">Termo impresso</b>
+        <p>Nome completo, assinatura e data. Uma via fica com a empresa e a outra com o colaborador.</p>
+      </div>
+    </article>
+    <nav class="pager"><a href="#processos"><small>← Anterior</small><b>Processos da loja</b></a><a class="next" href="#inicio"><small>Concluído →</small><b>Voltar ao início</b></a></nav>
+  </div></div>
+</section>
+
+</main>
+
+<footer class="foot gut">
+  <div class="wrap" style="max-width:1000px">
+    <span>Manual de Conduta e Atendimento · Auto Peças Fernando · Uso interno</span>
+    <span>Desenvolvido por <b>Andrade Consultoria DHO</b></span>
+  </div>
+</footer>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+  const ICON = {
+    ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    no:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg>',
+    dot:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>',
+    plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+    chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'
+  };
+  const store = {
+    get(k,d){try{const v=localStorage.getItem('apf_'+k);return v?JSON.parse(v):d}catch(e){return d}},
+    set(k,v){try{localStorage.setItem('apf_'+k,JSON.stringify(v))}catch(e){}}
+  };
+  const esc = s => s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  // ---------- list icons ----------
+  document.querySelectorAll('ul.clean[data-icon]').forEach(ul=>{
+    const k=ul.dataset.icon;
+    ul.querySelectorAll(':scope > li').forEach(li=>{
+      const span=document.createElement('span'); span.innerHTML=li.innerHTML; li.innerHTML='';
+      li.insertAdjacentHTML('afterbegin','<span class="ic '+k+'">'+ICON[k]+'</span>'); li.appendChild(span);
+    });
+  });
+
+  // ---------- Router & progress ----------
+  const CHAPTERS=['boas-vindas','cultura','atendimento','rotina','cuidado','processos','termo'];
+  const VIEWS=['inicio','situacoes','quiz',...CHAPTERS];
+  let visited=new Set(store.get('visited',[]));
+  function renderProgress(){
+    const n=CHAPTERS.filter(c=>visited.has(c)).length;
+    document.getElementById('topProg').textContent=n+' de 7 lidos';
+    document.getElementById('barFill').style.width=(n/7*100)+'%';
+    document.querySelectorAll('#chapterGrid [data-ch]').forEach(a=>{
+      const has=a.querySelector('.done');
+      if(visited.has(a.dataset.ch)&&!has) a.insertAdjacentHTML('beforeend','<span class="done">Lido ✓</span>');
+    });
+  }
+  function route(){
+    let v=(location.hash||'#inicio').slice(1);
+    if(!VIEWS.includes(v)) v='inicio';
+    document.querySelectorAll('.view').forEach(s=>s.hidden=s.dataset.view!==v);
+    if(CHAPTERS.includes(v)){visited.add(v);store.set('visited',[...visited]);}
+    renderProgress();
+    closeMenu();
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',route);
+
+  // ---------- Drawer ----------
+  const drawer=document.getElementById('drawer');
+  function closeMenu(){drawer.hidden=true;document.body.style.overflow=''}
+  document.getElementById('openMenu').onclick=()=>{drawer.hidden=false;document.body.style.overflow='hidden';document.getElementById('closeMenu').focus()};
+  document.getElementById('closeMenu').onclick=closeMenu;
+  drawer.addEventListener('click',e=>{if(e.target===drawer)closeMenu()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+
+  // ---------- Values ----------
+  const VALUES=[
+    ['Cooperação','Disposição para ajudar, somar, apoiar a equipe e entender que o resultado da loja é construído em conjunto.'],
+    ['Pertencimento','Sentir-se parte da empresa, cuidar daquilo que é da empresa e agir com senso de responsabilidade.'],
+    ['Iniciativa','Não esperar tudo ser mandado o tempo todo; observar, agir e contribuir com soluções.'],
+    ['Boa vontade','Ter postura disponível, respeitosa e comprometida com o trabalho.'],
+    ['Educação','Tratar clientes, colegas e parceiros com respeito, cordialidade e bom senso.'],
+    ['Organização','Manter atenção aos processos, ao ambiente, às peças, aos registros e ao próprio trabalho.'],
+    ['Relacionamento interpessoal','Conviver bem, saber ouvir, respeitar diferenças e contribuir para um ambiente saudável.'],
+    ['Respeito','Agir com consideração pelas pessoas, pelos processos e pelas orientações da empresa.'],
+    ['Bom atendimento ao cliente','Fazer o cliente se sentir bem recebido, bem orientado e respeitado em toda a experiência de compra.']
+  ];
+  const vg=document.getElementById('values');
+  vg.innerHTML=VALUES.map((v,i)=>'<button type="button" class="val" aria-expanded="false" id="val'+i+'"><span class="vt">'+v[0]+ICON.plus+'</span><span class="vd">'+v[1]+'</span></button>').join('');
+  vg.addEventListener('click',e=>{const b=e.target.closest('.val');if(b)b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true')});
+
+  // ---------- Pillars ----------
+  const PILL=[
+    ['Presença','Estar inteiro na conversa. Significa olhar para o cliente, evitar distrações, não atender com pressa visível e demonstrar disponibilidade real.'],
+    ['Comunicação não verbal','A postura, a expressão facial, o tom de voz e o ritmo da fala também atendem. Muitas vezes o cliente acredita mais no corpo do que apenas nas palavras.'],
+    ['Escuta ativa','Não é esperar a vez de falar. É ouvir com atenção, confirmar entendimento, fazer perguntas claras e demonstrar interesse genuíno pela necessidade do cliente.'],
+    ['Clareza','Clientes não gostam de respostas vagas, linguagem complicada ou informações incompletas. Falar com clareza reduz ansiedade e aumenta confiança.'],
+    ['Resolução ou direcionamento','Nem sempre será possível resolver tudo na hora, mas é possível assumir responsabilidade, orientar com segurança e dar encaminhamento ao que precisa ser feito.']
+  ];
+  const pn=document.getElementById('pillNav'), pp=document.getElementById('pillPanel');
+  pn.innerHTML=PILL.map((p,i)=>'<button role="tab" type="button" id="pill'+i+'" aria-label="Pilar '+(i+1)+': '+p[0]+'" aria-selected="false">'+(i+1)+'</button>').join('');
+  function showPill(i){
+    pn.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-selected',j===i?'true':'false'));
+    pp.innerHTML='<div class="eyebrow" style="color:var(--on-navy);opacity:.7">Pilar '+(i+1)+' de 5</div><div class="pt" style="margin-top:8px">'+PILL[i][0]+'</div><p>'+PILL[i][1]+'</p><div class="pn">'+
+      (i>0?'<button type="button" data-go="'+(i-1)+'">← '+PILL[i-1][0]+'</button>':'<span></span>')+
+      (i<4?'<button type="button" data-go="'+(i+1)+'">'+PILL[i+1][0]+' →</button>':'<span></span>')+'</div>';
+  }
+  pn.addEventListener('click',e=>{const b=e.target.closest('button');if(b)showPill([...pn.children].indexOf(b))});
+  pp.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)showPill(+b.dataset.go)});
+  showPill(0);
+
+  // ---------- Swap phrase ----------
+  const GOOD=['“Eu vou verificar para você”','“Vou te orientar”','“Vou encaminhar da forma correta”'];
+  let gi=0; document.getElementById('swapBtn').onclick=()=>{gi=(gi+1)%GOOD.length;document.getElementById('goodPhrase').textContent=GOOD[gi]};
+
+  // ---------- Client types ----------
+  const SEG=[
+    ['objetivo','quer <span>rapidez e agilidade.</span>','Seja direto, organize bem as informações e evite rodeios desnecessários.'],
+    ['inseguro','precisa de <span>mais explicação.</span>','Seja paciente, explique com calma e confirme se a informação foi compreendida.'],
+    ['irritado','precisa primeiro <span>ser ouvido.</span>','Antes de argumentar, acolha a situação, demonstre escuta e tente reduzir a tensão para só então avançar para a solução.']
+  ];
+  const sn=document.getElementById('segNav'), sp=document.getElementById('segPanel');
+  function showSeg(i){
+    sn.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-selected',j===i?'true':'false'));
+    sp.innerHTML='<span class="sec-tag">Cliente '+SEG[i][0]+'</span><p class="need">'+SEG[i][1]+'</p><p><b>Como agir:</b> '+SEG[i][2]+'</p>';
+  }
+  sn.addEventListener('click',e=>{const b=e.target.closest('button');if(b)showSeg(+b.dataset.k)});
+  showSeg(0);
+
+  // ---------- Processes ----------
+  // item: string | {t, pend:true} | {t, rule:'...'}
+  const P=(t)=>({t,pend:true});
+  const PROCS=[
+    {id:'abertura',t:'Abertura da loja',s:'Antes do primeiro cliente',items:[P('Horário que a loja precisa estar aberta'),'Conferência de limpeza e organização','Balcão pronto antes do primeiro cliente','Sistema ligado','Caixa conferido','Peças de maior giro organizadas','Reposição básica feita antes do atendimento']},
+    {id:'atendimento',t:'Atendimento ao cliente',s:'Não vender “no chute”',items:['Receber bem o cliente','Entender a necessidade antes de oferecer a peça','Perguntar modelo, ano, motor, placa ou chassi quando necessário','Conferir a aplicação da peça antes de vender','Não vender “no chute”','Confirmar com o cliente antes de fechar','Oferecer produtos complementares quando fizer sentido (venda casada)'],
+      extra:'<div class="example"><b>Exemplo</b>Se o cliente pede pastilha de freio, o vendedor pode avaliar se faz sentido oferecer fluido de freio, disco, limpador, aditivo ou outro item relacionado.</div>'},
+    {id:'orcamento',t:'Orçamento',s:'Do registro ao retorno ao cliente',items:[P('Como registrar o orçamento'),P('Prazo de validade'),P('Forma de envio para o cliente'),P('Como acompanhar orçamento parado'),P('Quando retornar para o cliente'),P('Como registrar o motivo de perda')]},
+    {id:'venda',t:'Venda',s:'Conferir antes de finalizar',items:['Conferência da peça antes de finalizar','Conferência de preço',P('Forma de pagamento'),P('Condições de desconto'),P('Quem pode autorizar desconto maior'),{t:'Emissão de cupom ou nota',rule:'No ato da compra, oriente o cliente a guardar a nota com o certificado de garantia da peça.'},{t:'Entrega correta da mercadoria',rule:'Sempre confira a mercadoria em conjunto com outra pessoa, para evitar erros e esquecimentos.'}]},
+    {id:'troca',t:'Troca e devolução',s:'Prazo máximo de 24 horas',items:[{t:'Prazo para troca',rule:'Prazo máximo de devolução: 24 horas.'},{t:'Condição da embalagem',rule:'Não aceitamos mercadorias com embalagens abertas ou danificadas.'},{t:'Peça usada ou instalada',rule:'Não pode ser trocada nem devolvida.'},{t:'Cupom ou nota fiscal',rule:'Necessário sempre.'},{t:'Quem autoriza exceções',rule:'As gestoras proprietárias. Na falta das gestoras, a Fernanda realiza a validação.'}],
+      extra:'<div class="example"><b>Exemplo de regra</b>Peça elétrica, peça instalada ou peça sem embalagem original precisa ter análise antes de qualquer troca.</div>'},
+    {id:'garantia',t:'Garantia',s:'Primeiro vem a pré-avaliação',items:[P('Quais peças têm garantia'),P('Prazo por tipo de peça'),P('Documentos necessários'),P('Quando precisa de laudo'),P('Como receber a peça com defeito'),P('Como enviar para o fornecedor'),P('Como comunicar o cliente'),P('Prazo de retorno'),{t:'Quando encaminhar para garantia',rule:'Primeiro é feita uma pré-avaliação; depois são realizados os procedimentos de garantia.'}]},
+    {id:'estoque',t:'Estoque',s:'Da entrada da mercadoria à prateleira',items:['Entrada de mercadoria','Conferência com a nota fiscal','Cadastro correto da peça','Localização no estoque','Reposição de prateleira','Contagem periódica','Controle de peças paradas','Controle de peças de alto giro',P('Quem pode retirar peça do estoque')]},
+    {id:'crediario',t:'Crediário, fiado ou venda faturada',s:'Autorização do titular da conta',items:[P('Quem pode comprar faturado'),{t:'Limite de crédito',rule:'Deve ser avaliado conforme o limite de crédito, após aprovação do caixa. O caixa valida o valor disponível e se será preciso uma entrada.'},P('Prazo de pagamento'),{t:'Quem autoriza',rule:'O titular da conta deve autorizar, por mensagem no WhatsApp, o nome do terceiro que fará a compra. Atenção à assinatura: legível e por extenso, não pode ser rubrica.'},P('Como registrar'),P('Como cobrar'),P('O que acontece em caso de atraso')]},
+    {id:'whatsapp',t:'Atendimento por telefone e WhatsApp',s:'Resposta, orçamento e acompanhamento',items:[P('Tempo máximo para resposta'),P('Padrão de mensagem'),P('Como solicitar os dados do veículo'),P('Como enviar orçamento'),P('Como registrar pedido'),P('Como acompanhar cliente que não respondeu'),P('O que pode ou não ser enviado')]}
+  ];
+  let checks=store.get('checks',{});
+  const pl=document.getElementById('procList');
+  pl.innerHTML=PROCS.map(p=>{
+    const items=p.items.map((it,i)=>{
+      const o=typeof it==='string'?{t:it}:it, id=p.id+'-'+i;
+      return '<li><label for="ck-'+id+'"><input type="checkbox" id="ck-'+id+'" data-ck="'+id+'"'+(checks[id]?' checked':'')+'><span>'+esc(o.t)+(o.pend?'<span class="tagp">a definir</span>':'')+(o.rule?'<span class="rule">'+esc(o.rule)+'</span>':'')+'</span></label></li>';
+    }).join('');
+    return '<details class="acc" data-proc="'+p.id+'"><summary><span class="st"><b>'+p.t+'</b><small>'+p.s+'</small></span><span class="mini-prog" data-mp="'+p.id+'"></span><span class="chev">'+ICON.chev+'</span></summary><div class="body"><ul class="check">'+items+'</ul>'+(p.extra||'')+'</div></details>';
+  }).join('');
+  function mini(){PROCS.forEach(p=>{const n=p.items.filter((_,i)=>checks[p.id+'-'+i]).length;document.querySelector('[data-mp="'+p.id+'"]').textContent=n+'/'+p.items.length})}
+  pl.addEventListener('change',e=>{const c=e.target.closest('[data-ck]');if(!c)return;checks[c.dataset.ck]=c.checked;store.set('checks',checks);mini()});
+  document.getElementById('clearChecks').onclick=()=>{checks={};store.set('checks',checks);pl.querySelectorAll('input').forEach(i=>i.checked=false);mini();toast('Itens desmarcados')};
+  mini();
+
+  // ---------- Situations ----------
+  const SIT=[
+    {c:'Atendimento',q:'O cliente quer trocar ou devolver uma peça',a:'Trate com educação, atenção e respeito. Confira: <b>prazo máximo de 24 horas</b>, embalagem sem abertura ou dano, cupom ou nota fiscal (sempre). Peça usada ou instalada <b>não pode</b> ser trocada nem devolvida. Peça elétrica, instalada ou sem embalagem original precisa de análise antes de qualquer troca. Exceções só com as gestoras proprietárias ou, na falta delas, com a Fernanda. Mesmo quando não for possível, explique de forma clara e profissional.',src:'Seção 11.2 e Processo de troca e devolução'},
+    {c:'Atendimento',q:'O cliente chegou irritado',a:'O cliente irritado precisa primeiro ser ouvido. Antes de argumentar, acolha a situação, demonstre escuta e tente reduzir a tensão. Só então avance para a solução. Ajuda dizer: “Eu entendo que isso é importante para você” ou “deixa eu te ouvir com calma para te ajudar da melhor forma”.',src:'Seção 9'},
+    {c:'Atendimento',q:'Não tenho certeza se a peça serve no carro',a:'Não venda “no chute”. Pergunte modelo, ano, motor, placa ou chassi quando necessário e confira a aplicação antes de vender. Se ainda houver dúvida sobre aplicação, compatibilidade ou identificação, busque apoio antes de finalizar o atendimento.',src:'Seção 11.3 e Processo de atendimento'},
+    {c:'Atendimento',q:'O cliente pediu um desconto maior ou um prazo especial',a:'Descontos, condições especiais, prazos diferenciados ou qualquer negociação fora do padrão seguem as orientações da empresa e, quando necessário, precisam da autorização da liderança. Não prometa o que não tem certeza de que poderá cumprir.',src:'Seção 11.1'},
+    {c:'Atendimento',q:'O cliente quer garantia de uma peça com defeito',a:'Atenda com educação e verifique as condições da peça, nota fiscal, prazo, embalagem e uso do produto. Primeiro é feita uma pré-avaliação; depois, os procedimentos de garantia. Em caso de dúvida, encaminhe à liderança e não assuma compromissos fora dos critérios da empresa.',src:'Seção 11.2 e Processo de garantia'},
+    {c:'Atendimento',q:'A frase “isso não é comigo” veio na cabeça',a:'Troque por “eu vou verificar para você”, “vou te orientar” ou “vou encaminhar da forma correta”. Transferir o problema sem assumir responsabilidade pelo direcionamento é um dos erros mais comuns.',src:'Seções 8 e 10'},
+    {c:'Loja',q:'Mostrei uma peça e o cliente não levou',a:'Retorne com a peça para o estoque.',src:'Pontos importantes'},
+    {c:'Loja',q:'Vou deixar uma mercadoria separada para retirada',a:'Identifique com os dados do comprador e coloque um aviso de que já está em separação na expedição.',src:'Pontos importantes'},
+    {c:'Loja',q:'Faltou uma peça no estoque',a:'Anote no caderno de falta, de acordo com o fornecedor.',src:'Pontos importantes'},
+    {c:'Loja',q:'O cliente quer uma peça por encomenda',a:'Analise, de acordo com o cliente e a peça, se deve pedir uma entrada. Se sim, peça à gestora o valor para passar ao cliente. Ligue rapidamente para o fornecedor para não perder a venda. Tenha ano, modelo, marca e, se possível, uma foto.',src:'Pontos importantes'},
+    {c:'Loja',q:'Outra pessoa vai comprar no faturado de um cliente',a:'O titular da conta deve autorizar, por mensagem no WhatsApp, o nome do terceiro que fará a compra. A assinatura deve ser legível e por extenso, não pode ser rubrica. O limite de crédito é validado pelo caixa, que também vê se será preciso uma entrada.',src:'Processo de crediário'},
+    {c:'Loja',q:'Vou entregar a mercadoria ao cliente',a:'Confira código, descrição, quantidade, aplicação e estado da peça. Sempre confira a mercadoria em conjunto com outra pessoa, e oriente o cliente a guardar a nota com o certificado de garantia.',src:'Seção 11.3 e Processo de venda'},
+    {c:'Loja',q:'Errei uma venda ou um lançamento',a:'Comunique rapidamente a liderança para que a situação seja corrigida com transparência.',src:'Seção 18'},
+    {c:'Rotina',q:'Vou me atrasar ou faltar',a:'Comunique o quanto antes, conforme orientação da empresa.',src:'Seção 15'},
+    {c:'Rotina',q:'Fui ao médico e recebi atestado',a:'Entregue o atestado à empresa conforme o procedimento interno, em até <b>48 horas</b>. Em caso de dúvida sobre faltas legais ou justificadas, procure o RH.',src:'Seção 16'},
+    {c:'Rotina',q:'Preciso fazer um exame preventivo',a:'Comunique a empresa com antecedência sempre que possível e apresente o comprovante de comparecimento. A lei prevê ausência sem prejuízo do salário para exames preventivos relacionados ao HPV e ao câncer (art. 473 da CLT).',src:'Seção 20.1'},
+    {c:'Rotina',q:'Preciso fazer hora extra ou mudar meu horário',a:'Horas extras ou mudanças de jornada só com alinhamento prévio e autorização da empresa. Dúvidas sobre horários e ponto: procure sua liderança.',src:'Seções 12.1 e 15'},
+    {c:'Rotina',q:'Quero usar o crediário como colaborador',a:'É um benefício com desconto em folha. Precisa ser autorizado pelos gestores, assim como as formas de parcelamento.',src:'Pontos importantes'},
+    {c:'Convivência',q:'Um colega pediu a minha senha',a:'Não passe. Senhas são pessoais e intransferíveis. Ao sair do computador, encerre ou bloqueie o acesso.',src:'Seção 17'},
+    {c:'Convivência',q:'Sofri ou presenciei assédio ou discriminação',a:'Comunique à liderança ou ao RH, para que a situação seja tratada com a devida seriedade. A empresa não admite discriminação nem assédio moral ou sexual.',src:'Seção 14'},
+    {c:'Convivência',q:'Tenho uma crítica ou sugestão',a:'Leve à liderança ou ao RH de forma objetiva, respeitosa e com foco em solução. Críticas devem ser tratadas internamente.',src:'Seções 13 e 21'},
+    {c:'Convivência',q:'Vi uma situação de risco ou um acidente',a:'Comunique situações de risco, falhas, acidentes ou quase acidentes. Zele pela sua integridade e pela dos colegas.',src:'Seção 20'}
+  ];
+  const CATS=['Todos',...new Set(SIT.map(s=>s.c))];
+  let cat='Todos';
+  const sc=document.getElementById('sitChips'), sl=document.getElementById('sitList'), si=document.getElementById('sitSearch');
+  sc.innerHTML=CATS.map(c=>'<button type="button" aria-pressed="'+(c===cat)+'" data-c="'+c+'">'+c+'</button>').join('');
+  sl.innerHTML=SIT.map((s,i)=>'<details class="acc" data-i="'+i+'"><summary><span class="st"><b>'+s.q+'</b><small>'+s.c+'</small></span><span class="chev">'+ICON.chev+'</span></summary><div class="body"><p>'+s.a+'</p><span class="src">Onde está no manual: '+s.src+'</span></div></details>').join('');
+  const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+  function filt(){
+    const q=norm(si.value.trim()); let n=0;
+    sl.querySelectorAll('details').forEach(d=>{const s=SIT[+d.dataset.i];const ok=(cat==='Todos'||s.c===cat)&&(!q||norm(s.q+' '+s.a+' '+s.src).includes(q));d.hidden=!ok;if(ok)n++});
+    document.getElementById('sitEmpty').hidden=n>0;
+  }
+  sc.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cat=b.dataset.c;sc.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));filt()});
+  si.addEventListener('input',filt);
+
+  // ---------- Quiz ----------
+  const Q=[
+    {q:'Qual é o prazo máximo para devolução de uma mercadoria?',o:['24 horas','7 dias','30 dias'],a:0,e:'O prazo máximo de devolução é de 24 horas.'},
+    {q:'O cliente quer trocar uma peça que já foi instalada. E agora?',o:['Troca na hora, sem análise','Não pode ser trocada nem devolvida','Troca se ele tiver a nota'],a:1,e:'Peça usada ou instalada não pode ser trocada nem devolvida.'},
+    {q:'Em quanto tempo o atestado médico deve ser entregue?',o:['Até 48 horas','Até 1 semana','Só no fim do mês'],a:0,e:'O prazo indicado é de até 48 horas, conforme o procedimento interno.'},
+    {q:'Quanto tempo dura o horário de almoço?',o:['1 hora','1 hora e meia','2 horas'],a:2,e:'O horário de almoço é de 2 horas, conforme a escala ou orientação da empresa.'},
+    {q:'Um cliente chega irritado. Qual é o primeiro passo?',o:['Explicar logo a regra da loja','Ouvir e acolher antes de argumentar','Chamar outro colega para atender'],a:1,e:'O cliente irritado precisa primeiro ser ouvido. Acolha, reduza a tensão e só então avance para a solução.'},
+    {q:'O que dizer no lugar de “isso não é comigo”?',o:['“Eu vou verificar para você”','“Pergunta no caixa”','“Volta outro dia”'],a:0,e:'Use “eu vou verificar para você”, “vou te orientar” ou “vou encaminhar da forma correta”.'},
+    {q:'Um colega pede a sua senha do sistema emprestada.',o:['Passo, se for rápido','Passo só para quem é de confiança','Não passo: senha é pessoal e intransferível'],a:2,e:'Senhas são pessoais e intransferíveis e não devem ser compartilhadas com colegas.'},
+    {q:'Você mostrou uma peça e o cliente não comprou. O que fazer com ela?',o:['Deixar no balcão para o próximo','Retornar com ela para o estoque','Deixar separada para ele'],a:1,e:'Sempre que a peça mostrada não for vendida, retorne com ela para o estoque.'},
+    {q:'Como deve ser a conferência da mercadoria na entrega?',o:['Em conjunto com outra pessoa','Só pelo sistema','Pelo próprio cliente'],a:0,e:'Sempre confira a mercadoria em conjunto com outra pessoa, para evitar erros e esquecimentos.'},
+    {q:'Na compra faturada feita por outra pessoa, quem precisa autorizar?',o:['O vendedor do balcão','O titular da conta, por mensagem no WhatsApp','Não precisa de autorização'],a:1,e:'O titular da conta autoriza por mensagem no WhatsApp o nome do terceiro que fará a compra.'}
+  ];
+  const qz=document.getElementById('quiz'); let qi=0, pts=0;
+  function qRender(){
+    if(qi>=Q.length){
+      const best=Math.max(pts,store.get('best',0)); store.set('best',best);
+      const msg=pts===10?'Perfeito! Você domina o manual.':pts>=7?'Muito bem! Revise os pontos que errou.':'Vale reler os capítulos e tentar de novo.';
+      qz.innerHTML='<div class="eyebrow" style="color:var(--yellow)">Resultado</div><div class="score">'+pts+'/10</div><h3>'+msg+'</h3><p style="margin-top:10px;opacity:.85">Sua melhor nota neste aparelho: '+best+'/10.</p><div class="cta" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px"><button class="btn y" type="button" id="qAgain">Refazer o quiz</button><a class="btn g" href="#situacoes">O que eu faço se…?</a></div>';
+      document.getElementById('qAgain').onclick=()=>{qi=0;pts=0;qRender()};
+      return;
+    }
+    const it=Q[qi];
+    qz.innerHTML='<div class="qtop"><span>Pergunta '+(qi+1)+' de '+Q.length+'</span><span>'+pts+' acerto'+(pts===1?'':'s')+'</span></div><div class="qbar"><i style="width:'+(qi/Q.length*100)+'%"></i></div><h3>'+it.q+'</h3><div class="opts">'+it.o.map((o,i)=>'<button type="button" class="opt" data-o="'+i+'"><span class="l">'+'ABC'[i]+'</span><span>'+o+'</span></button>').join('')+'</div><div id="qfb"></div>';
+  }
+  qz.addEventListener('click',e=>{
+    const b=e.target.closest('.opt'); if(!b||b.disabled)return;
+    const it=Q[qi], pick=+b.dataset.o, ok=pick===it.a; if(ok)pts++;
+    qz.querySelectorAll('.opt').forEach((x,i)=>{x.disabled=true;if(i===it.a)x.classList.add('right');else if(i===pick)x.classList.add('wrong')});
+    document.getElementById('qfb').innerHTML='<div class="fb"><b>'+(ok?'Isso mesmo!':'Não é bem assim.')+'</b> '+it.e+'</div><button class="btn y qnext" type="button" id="qNext">'+(qi===Q.length-1?'Ver resultado':'Próxima pergunta')+' →</button>';
+    document.getElementById('qNext').onclick=()=>{qi++;qRender()};
+    document.getElementById('qNext').focus();
+  });
+  qRender();
+
+  // ---------- Termo ----------
+  const tf=document.getElementById('termoForm');
+  const saved=store.get('termo',null);
+  const tData=document.getElementById('tData');
+  try{tData.value=new Date().toISOString().slice(0,10)}catch(e){}
+  function showCert(t){
+    document.getElementById('certName').textContent=t.nome;
+    const [y,m,d]=t.data.split('-'); document.getElementById('certDate').textContent='Leitura confirmada em '+d+'/'+m+'/'+y+'.';
+    document.getElementById('cert').hidden=false; tf.hidden=true;
+  }
+  if(saved&&saved.nome) showCert(saved);
+  tf.addEventListener('submit',e=>{
+    e.preventDefault();
+    const nome=document.getElementById('tNome').value.trim(), data=tData.value, ok=document.getElementById('tOk').checked;
+    if(!nome||!data||!ok){document.getElementById('tErr').hidden=false;return}
+    document.getElementById('tErr').hidden=true;
+    const t={nome,data}; store.set('termo',t); visited.add('termo'); store.set('visited',[...visited]); renderProgress(); showCert(t);
+  });
+
+  // ---------- toast ----------
+  let tt; function toast(m){const el=document.getElementById('toast');el.textContent=m;el.hidden=false;clearTimeout(tt);tt=setTimeout(()=>el.hidden=true,1800)}
+
+  route();
+})();
+</script>
+
+</body>
+</html>
